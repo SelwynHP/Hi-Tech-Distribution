@@ -33,7 +33,7 @@ namespace Hi_Tech_Management_System
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            comboBoxSelection.SelectedIndex = 0;
         }
 
         private void buttonSelect_Click(object sender, EventArgs e)

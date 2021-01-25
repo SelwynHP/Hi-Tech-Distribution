@@ -101,7 +101,6 @@
             this.Controls.Add(this.labelLoginUser);
             this.Name = "FormLogin";
             this.Text = "Hi-Tech Distribution Inc";
-            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

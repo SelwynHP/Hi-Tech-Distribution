@@ -15,9 +15,8 @@ namespace Hi_Tech_Management_System
         static string filePathTemp = Application.StartupPath + @"\temp.dat";
         static string filePathBackup = Application.StartupPath + @"\backup.dat";
 
-        public static List<Employee> GetEmployee()
+        public static List<Employee> GetEmployees()
         {
-            
             List<Employee> myEmployeeList = new List<Employee>();
             string line;
 
@@ -50,9 +49,8 @@ namespace Hi_Tech_Management_System
                 }
                 sr.Close();
 
-            return myEmployeeList;
+            return myEmployeeList.OrderBy(x=>x.EmpId).ToList();
         }
-
         public static List<User> GetUsers()
         {
             List<User> myUserList = new List<User>();
@@ -78,7 +76,7 @@ namespace Hi_Tech_Management_System
                     line = sr.ReadLine();
                 }
             }
-            return myUserList;
+            return myUserList.OrderBy(x=>x.EmpId).ToList();
         }
         public static void SetUser(User user)
         {
@@ -87,83 +85,13 @@ namespace Hi_Tech_Management_System
                 sw.WriteLine(user.GetUserInfo());
             }
         }
-
-        public static ListViewItem ConvertToListViewItemUser(User element)
-        {
-            ListViewItem item = new ListViewItem(Convert.ToString(element.EmpId));
-            item.SubItems.Add(element.FirstName);
-            item.SubItems.Add(element.LastName);
-            item.SubItems.Add(element.Username);
-            //item.SubItems.Add(element.Password);
-            item.SubItems.Add("*******");
-            item.SubItems.Add(Convert.ToString(element.Al));
-            item.SubItems.Add(Convert.ToString(element.Salary));
-
-            return item;
-        }
-
-        public static ListViewItem ConvertToListViewItemEmployee(Employee element)
-        {
-            ListViewItem item = new ListViewItem(Convert.ToString(element.EmpId));
-            item.SubItems.Add(element.FirstName);
-            item.SubItems.Add(element.LastName);
-            item.SubItems.Add(Convert.ToString(element.PhoneNumber));
-            item.SubItems.Add(element.Address.GetAddress());
-            item.SubItems.Add(Convert.ToString(element.Ssn));
-            item.SubItems.Add(Convert.ToString(element.Salary));
-
-            return item;
-        }
-        public static void SetEmployee(Employee anEmployee)
-        {
-            using(StreamWriter sw = new StreamWriter(filePathEmp,true))
-            {
-                sw.WriteLine(anEmployee.GetEmployeeInfo());
-            }
-        }
-        public static void UpdateEmployee(Employee employee)
-        {
-            List<Employee> myEmployeeList = EmployeeDA.GetEmployee();
-            using (StreamWriter sw = new StreamWriter(filePathTemp))
-            {
-                foreach (Employee element in myEmployeeList)
-                {
-                    if (element.EmpId != employee.EmpId)
-                    {
-                        sw.WriteLine(element.GetEmployeeInfo());
-                    }
-                }
-            }
-            File.Replace(filePathTemp, filePathEmp, filePathBackup);
-
-            using (StreamWriter sw = new StreamWriter(filePathEmp, true))
-            {
-                sw.WriteLine(employee.GetEmployeeInfo());
-            }
-                EmployeeDA.SetEmployee(employee);
-        }
-        public static void DeleteEmployee(Employee employee)
-        {
-            List<Employee> myEmployeeList = EmployeeDA.GetEmployee();
-            using (StreamWriter sw = new StreamWriter(filePathTemp))
-            {
-                foreach (Employee element in myEmployeeList)
-                {
-                    if (element.EmpId != employee.EmpId)
-                    {
-                        sw.WriteLine(element.GetEmployeeInfo());
-                    }
-                }
-            }
-            File.Replace(filePathTemp, filePathEmp, filePathBackup);
-        }
         public static void UpdateUser(User user)
         {
             List<User> myUserList = EmployeeDA.GetUsers();
 
             using (StreamWriter sw = new StreamWriter(filePathTemp))
             {
-                foreach(User element in myUserList)
+                foreach (User element in myUserList)
                 {
                     if (element.EmpId != user.EmpId)
                     {
@@ -173,12 +101,7 @@ namespace Hi_Tech_Management_System
             }
 
             File.Replace(filePathTemp, filePathUser, filePathBackup);
-
-            using (StreamWriter sw = new StreamWriter(filePathUser, true))
-            {
-                sw.WriteLine(user.GetUserInfo());
-            }
-                EmployeeDA.SetUser(user);
+            EmployeeDA.SetUser(user);
         }
         public static void DeleteUser(User user)
         {
@@ -196,6 +119,111 @@ namespace Hi_Tech_Management_System
             }
 
             File.Replace(filePathTemp, filePathUser, filePathBackup);
+        }
+        public static void SetEmployee(Employee anEmployee)
+        {
+            using (StreamWriter sw = new StreamWriter(filePathEmp, true))
+            {
+                sw.WriteLine(anEmployee.GetEmployeeInfo());
+            }
+        }
+        public static void UpdateEmployee(Employee employee)
+        {
+            List<Employee> myEmployeeList = EmployeeDA.GetEmployees();
+            using (StreamWriter sw = new StreamWriter(filePathTemp))
+            {
+                foreach (Employee element in myEmployeeList)
+                {
+                    if (element.EmpId != employee.EmpId)
+                    {
+                        sw.WriteLine(element.GetEmployeeInfo());
+                    }
+                }
+            }
+            File.Replace(filePathTemp, filePathEmp, filePathBackup);
+            EmployeeDA.SetEmployee(employee);
+        }
+        public static void DeleteEmployee(Employee employee)
+        {
+            List<Employee> myEmployeeList = EmployeeDA.GetEmployees();
+            using (StreamWriter sw = new StreamWriter(filePathTemp))
+            {
+                foreach (Employee element in myEmployeeList)
+                {
+                    if (element.EmpId != employee.EmpId)
+                    {
+                        sw.WriteLine(element.GetEmployeeInfo());
+                    }
+                }
+            }
+            File.Replace(filePathTemp, filePathEmp, filePathBackup);
+        }
+        public static ListViewItem ConvertToListViewItemUser(User element)
+        {
+            ListViewItem item = new ListViewItem(Convert.ToString(element.EmpId));
+            item.SubItems.Add(element.FirstName);
+            item.SubItems.Add(element.LastName);
+            item.SubItems.Add(element.Username);
+            //item.SubItems.Add(element.Password);
+            item.SubItems.Add("*******");
+            item.SubItems.Add(Convert.ToString(element.Al));
+            item.SubItems.Add(Convert.ToString(element.Salary));
+
+            return item;
+        }
+        public static ListViewItem ConvertToListViewItemEmployee(Employee element)
+        {
+            ListViewItem item = new ListViewItem(Convert.ToString(element.EmpId));
+            item.SubItems.Add(element.FirstName);
+            item.SubItems.Add(element.LastName);
+            item.SubItems.Add(Convert.ToString(element.PhoneNumber));
+            item.SubItems.Add(element.Address.GetAddress());
+            item.SubItems.Add(Convert.ToString(element.Ssn));
+            item.SubItems.Add(Convert.ToString(element.Salary));
+
+            return item;
+        }
+        public static int GetNextEMPID()
+        {
+            int maxID = 0;
+            List<Employee> eList = GetEmployees();
+            foreach(Employee element in eList)
+            {
+                if(element.EmpId > maxID)
+                {
+                    maxID = element.EmpId;
+                }
+            }
+
+            if(maxID == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return maxID + 1;
+            }
+        }
+        public static int GetNextUID()
+        {
+            int maxID = 0;
+            List<User> uList = GetUsers();
+            foreach (Employee element in uList)
+            {
+                if (element.EmpId > maxID)
+                {
+                    maxID = element.EmpId;
+                }
+            }
+
+            if (maxID == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return maxID + 1;
+            }
         }
     }
 }

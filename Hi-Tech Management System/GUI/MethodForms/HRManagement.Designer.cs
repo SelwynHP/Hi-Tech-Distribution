@@ -84,15 +84,16 @@
             // 
             this.textBoxEmpID.Location = new System.Drawing.Point(69, 92);
             this.textBoxEmpID.Name = "textBoxEmpID";
+            this.textBoxEmpID.ReadOnly = true;
             this.textBoxEmpID.Size = new System.Drawing.Size(100, 20);
-            this.textBoxEmpID.TabIndex = 0;
+            this.textBoxEmpID.TabIndex = 1;
             // 
             // textBoxFirstName
             // 
             this.textBoxFirstName.Location = new System.Drawing.Point(175, 92);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFirstName.TabIndex = 1;
+            this.textBoxFirstName.TabIndex = 2;
             // 
             // textBoxLastName
             // 
@@ -100,28 +101,28 @@
             this.textBoxLastName.Location = new System.Drawing.Point(281, 92);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxLastName.TabIndex = 2;
+            this.textBoxLastName.TabIndex = 3;
             // 
             // textBoxPhoneNumber
             // 
             this.textBoxPhoneNumber.Location = new System.Drawing.Point(69, 137);
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPhoneNumber.TabIndex = 3;
+            this.textBoxPhoneNumber.TabIndex = 6;
             // 
             // textBoxSSN
             // 
             this.textBoxSSN.Location = new System.Drawing.Point(175, 137);
             this.textBoxSSN.Name = "textBoxSSN";
             this.textBoxSSN.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSSN.TabIndex = 4;
+            this.textBoxSSN.TabIndex = 7;
             // 
             // textBoxSalary
             // 
             this.textBoxSalary.Location = new System.Drawing.Point(281, 137);
             this.textBoxSalary.Name = "textBoxSalary";
             this.textBoxSalary.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSalary.TabIndex = 5;
+            this.textBoxSalary.TabIndex = 8;
             // 
             // listViewUser
             // 
@@ -133,6 +134,7 @@
             this.columnHeaderPassword,
             this.columnHeaderAccessLevel});
             this.listViewUser.GridLines = true;
+            this.listViewUser.HideSelection = false;
             this.listViewUser.Location = new System.Drawing.Point(12, 253);
             this.listViewUser.Name = "listViewUser";
             this.listViewUser.Size = new System.Drawing.Size(636, 250);
@@ -179,7 +181,7 @@
             this.comboBoxModeSelection.Location = new System.Drawing.Point(36, 38);
             this.comboBoxModeSelection.Name = "comboBoxModeSelection";
             this.comboBoxModeSelection.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxModeSelection.TabIndex = 7;
+            this.comboBoxModeSelection.TabIndex = 0;
             this.comboBoxModeSelection.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeSelection_SelectedIndexChanged);
             // 
             // labelModeSelection
@@ -268,7 +270,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(493, 137);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPassword.TabIndex = 17;
+            this.textBoxPassword.TabIndex = 9;
             // 
             // textBoxUserName
             // 
@@ -276,7 +278,7 @@
             this.textBoxUserName.Location = new System.Drawing.Point(493, 92);
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxUserName.TabIndex = 16;
+            this.textBoxUserName.TabIndex = 5;
             // 
             // listViewEmployee
             // 
@@ -289,6 +291,7 @@
             this.columnHeader6,
             this.columnHeader7});
             this.listViewEmployee.GridLines = true;
+            this.listViewEmployee.HideSelection = false;
             this.listViewEmployee.Location = new System.Drawing.Point(12, 253);
             this.listViewEmployee.Name = "listViewEmployee";
             this.listViewEmployee.Size = new System.Drawing.Size(636, 250);
@@ -346,7 +349,7 @@
             this.textBoxAccessLevel.Location = new System.Drawing.Point(387, 92);
             this.textBoxAccessLevel.Name = "textBoxAccessLevel";
             this.textBoxAccessLevel.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAccessLevel.TabIndex = 21;
+            this.textBoxAccessLevel.TabIndex = 4;
             // 
             // labelAddress
             // 
@@ -363,14 +366,14 @@
             this.textBoxStreetNumber.Multiline = true;
             this.textBoxStreetNumber.Name = "textBoxStreetNumber";
             this.textBoxStreetNumber.Size = new System.Drawing.Size(100, 20);
-            this.textBoxStreetNumber.TabIndex = 23;
+            this.textBoxStreetNumber.TabIndex = 10;
             // 
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(69, 224);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 25;
+            this.buttonAdd.TabIndex = 15;
             this.buttonAdd.Text = "&Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -380,7 +383,7 @@
             this.buttonUpdate.Location = new System.Drawing.Point(150, 224);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
-            this.buttonUpdate.TabIndex = 26;
+            this.buttonUpdate.TabIndex = 16;
             this.buttonUpdate.Text = "&Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
@@ -390,7 +393,7 @@
             this.buttonDelete.Location = new System.Drawing.Point(231, 224);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonDelete.TabIndex = 27;
+            this.buttonDelete.TabIndex = 17;
             this.buttonDelete.Text = "&Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -400,28 +403,28 @@
             this.textBoxStreetName.Location = new System.Drawing.Point(175, 180);
             this.textBoxStreetName.Name = "textBoxStreetName";
             this.textBoxStreetName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxStreetName.TabIndex = 28;
+            this.textBoxStreetName.TabIndex = 11;
             // 
             // textBoxPostalCode
             // 
             this.textBoxPostalCode.Location = new System.Drawing.Point(281, 180);
             this.textBoxPostalCode.Name = "textBoxPostalCode";
             this.textBoxPostalCode.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPostalCode.TabIndex = 29;
+            this.textBoxPostalCode.TabIndex = 12;
             // 
             // textBoxCity
             // 
             this.textBoxCity.Location = new System.Drawing.Point(387, 180);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(100, 20);
-            this.textBoxCity.TabIndex = 30;
+            this.textBoxCity.TabIndex = 13;
             // 
             // textBoxProvince
             // 
             this.textBoxProvince.Location = new System.Drawing.Point(493, 180);
             this.textBoxProvince.Name = "textBoxProvince";
             this.textBoxProvince.Size = new System.Drawing.Size(100, 20);
-            this.textBoxProvince.TabIndex = 31;
+            this.textBoxProvince.TabIndex = 14;
             // 
             // labelStreetNumber
             // 
@@ -473,7 +476,7 @@
             this.buttonExit.Location = new System.Drawing.Point(312, 224);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExit.TabIndex = 37;
+            this.buttonExit.TabIndex = 18;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);

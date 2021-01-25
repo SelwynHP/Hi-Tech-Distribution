@@ -22,7 +22,7 @@ namespace Hi_Tech_Management_System
 
             listViewEmployee.Items.Clear();
             listViewUser.Items.Clear();
-            myEmployeeList = EmployeeDA.GetEmployee();
+            myEmployeeList = EmployeeDA.GetEmployees();
             myUserList = EmployeeDA.GetUsers();
             foreach (User element in myUserList)
             {
@@ -57,8 +57,12 @@ namespace Hi_Tech_Management_System
         }
         public User ConvertTextUser()
         {
-            User aUser = new User();
-            aUser.EmpId = Convert.ToInt32(textBoxEmpID.Text);
+            User aUser = new User() { EmpId=0 };
+            try
+            {
+                aUser.EmpId = Convert.ToInt32(textBoxEmpID.Text);
+            }
+            catch(Exception ex) { }
             aUser.FirstName = textBoxFirstName.Text;
             aUser.LastName = textBoxLastName.Text;
             aUser.Username = textBoxUserName.Text;
@@ -72,7 +76,7 @@ namespace Hi_Tech_Management_System
         {
             InitializeComponent();
             comboBoxModeSelection.SelectedItem = "Users";
-            myEmployeeList = EmployeeDA.GetEmployee();
+            myEmployeeList = EmployeeDA.GetEmployees();
             myUserList = EmployeeDA.GetUsers();
             RefreshList();
         }

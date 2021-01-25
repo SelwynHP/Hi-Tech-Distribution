@@ -35,6 +35,7 @@
             // 
             // comboBoxSelection
             // 
+            this.comboBoxSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelection.FormattingEnabled = true;
             this.comboBoxSelection.Items.AddRange(new object[] {
             "HR Management",
