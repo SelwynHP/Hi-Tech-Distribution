@@ -29,7 +29,7 @@ namespace Hi_Tech_Management_System
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             bool access = false;
-            myUserList = EmployeeDA.GetUser();
+            myUserList = EmployeeDA.GetUsers();
             foreach(User element in myUserList)
             {
                 if ((textBoxUserName.Text == element.Username) && (textBoxPassword.Text == element.Password))

@@ -23,7 +23,7 @@ namespace Hi_Tech_Management_System
             listViewEmployee.Items.Clear();
             listViewUser.Items.Clear();
             myEmployeeList = EmployeeDA.GetEmployee();
-            myUserList = EmployeeDA.GetUser();
+            myUserList = EmployeeDA.GetUsers();
             foreach (User element in myUserList)
             {
                 listViewUser.Items.Add(EmployeeDA.ConvertToListViewItemUser(element));
@@ -73,7 +73,7 @@ namespace Hi_Tech_Management_System
             InitializeComponent();
             comboBoxModeSelection.SelectedItem = "Users";
             myEmployeeList = EmployeeDA.GetEmployee();
-            myUserList = EmployeeDA.GetUser();
+            myUserList = EmployeeDA.GetUsers();
             RefreshList();
         }
 

@@ -53,7 +53,7 @@ namespace Hi_Tech_Management_System
             return myEmployeeList;
         }
 
-        public static List<User> GetUser()
+        public static List<User> GetUsers()
         {
             List<User> myUserList = new List<User>();
 
@@ -159,7 +159,7 @@ namespace Hi_Tech_Management_System
         }
         public static void UpdateUser(User user)
         {
-            List<User> myUserList = EmployeeDA.GetUser();
+            List<User> myUserList = EmployeeDA.GetUsers();
 
             using (StreamWriter sw = new StreamWriter(filePathTemp))
             {
@@ -182,7 +182,7 @@ namespace Hi_Tech_Management_System
         }
         public static void DeleteUser(User user)
         {
-            List<User> myUserList = EmployeeDA.GetUser();
+            List<User> myUserList = EmployeeDA.GetUsers();
 
             using (StreamWriter sw = new StreamWriter(filePathTemp))
             {
