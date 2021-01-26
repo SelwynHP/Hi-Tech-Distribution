@@ -8,7 +8,7 @@ namespace Hi_Tech_Management_System
 {
     public class User : Employee
     {
-        public enum EnumAL { Admin, MIS_Manager, Sales_Manager, Inventory_Controller, Order_Clerk }
+        public enum EnumAL { Undefined, Admin, MIS_Manager, Sales_Manager, Inventory_Controller, Order_Clerk }
 
         //private int empId;
         //private string firstName;
