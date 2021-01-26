@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hi-Tech Management System", "Hi-Tech Management System\Hi-Tech Management System.csproj", "{34CED5A8-DF0E-454C-A844-80AE3AAD17E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectInventory", "UnitTestProjectInventory\UnitTestProjectInventory.csproj", "{D2A6BF0D-5AB5-4F7E-9973-8C8F34F33391}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{34CED5A8-DF0E-454C-A844-80AE3AAD17E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34CED5A8-DF0E-454C-A844-80AE3AAD17E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34CED5A8-DF0E-454C-A844-80AE3AAD17E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A6BF0D-5AB5-4F7E-9973-8C8F34F33391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A6BF0D-5AB5-4F7E-9973-8C8F34F33391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A6BF0D-5AB5-4F7E-9973-8C8F34F33391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A6BF0D-5AB5-4F7E-9973-8C8F34F33391}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
