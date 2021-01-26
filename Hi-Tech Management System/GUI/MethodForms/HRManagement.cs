@@ -57,17 +57,21 @@ namespace Hi_Tech_Management_System
         }
         public User ConvertTextUser()
         {
-            User aUser = new User() { EmpId=0 };
+            User aUser = new User();
             try
             {
                 aUser.EmpId = Convert.ToInt32(textBoxEmpID.Text);
             }
-            catch(Exception ex) { }
+            catch(Exception ex) { aUser.EmpId = -1; }
             aUser.FirstName = textBoxFirstName.Text;
             aUser.LastName = textBoxLastName.Text;
             aUser.Username = textBoxUserName.Text;
-            aUser.Password = "123";
-            aUser.Al = (User.EnumAL) Enum.Parse(typeof(User.EnumAL),textBoxAccessLevel.Text);
+            aUser.Password = textBoxPassword.Text;
+            try
+            {
+                aUser.Al = (User.EnumAL)Enum.Parse(typeof(User.EnumAL), textBoxAccessLevel.Text);
+            }
+            catch(Exception ex) { aUser.Al = User.EnumAL.Undefined; }
 
             return aUser;
         }
@@ -80,13 +84,56 @@ namespace Hi_Tech_Management_System
             myUserList = EmployeeDA.GetUsers();
             RefreshList();
         }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            if (comboBoxModeSelection.Text == "Employees")
+            {
+                EmployeeDA.SetEmployee(ConvertTextEmployee());
+            }
+            if (comboBoxModeSelection.Text == "Users")
+            {
+                User aUser = ConvertTextUser();
+                aUser.EmpId = EmployeeDA.GetNextUID();
+                EmployeeDA.SetUser(aUser);
+            }
+            RefreshList();
         }
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (comboBoxModeSelection.Text == "Employees")
+            {
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+                EmployeeDA.UpdateEmployee(ConvertTextEmployee());
+            }
+            if (comboBoxModeSelection.Text == "Users")
+            {
+
+                EmployeeDA.UpdateUser(ConvertTextUser());
+            }
+            RefreshList();
+        }
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (comboBoxModeSelection.Text == "Employees")
+            {
+                EmployeeDA.DeleteEmployee(ConvertTextEmployee());
+            }
+            if (comboBoxModeSelection.Text == "Users")
+            {
+
+                EmployeeDA.DeleteUser(ConvertTextUser());
+            }
+            RefreshList();
+        }
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+        private void listViewUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = listViewUser.FocusedItem.Index;
 
@@ -97,7 +144,22 @@ namespace Hi_Tech_Management_System
             textBoxPassword.Text = "123";
             textBoxAccessLevel.Text = Convert.ToString(myUserList[index].Al);
         }
+        private void listViewEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = listViewEmployee.FocusedItem.Index;
 
+            textBoxEmpID.Text = Convert.ToString(myEmployeeList[index].EmpId);
+            textBoxFirstName.Text = myEmployeeList[index].FirstName;
+            textBoxLastName.Text = myEmployeeList[index].LastName;
+            textBoxPhoneNumber.Text = Convert.ToString(myEmployeeList[index].PhoneNumber);
+            textBoxSSN.Text = Convert.ToString(myEmployeeList[index].Ssn);
+            textBoxSalary.Text = Convert.ToString(myEmployeeList[index].Salary);
+            textBoxStreetNumber.Text = Convert.ToString(myEmployeeList[index].Address.StreetNumber);
+            textBoxStreetName.Text = myEmployeeList[index].Address.StreetName;
+            textBoxPostalCode.Text = myEmployeeList[index].Address.PostalCode;
+            textBoxCity.Text = myEmployeeList[index].Address.City;
+            textBoxProvince.Text = myEmployeeList[index].Address.Province;
+        }
         private void comboBoxModeSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach(Control element in Controls)
@@ -181,79 +243,6 @@ namespace Hi_Tech_Management_System
                     listViewEmployee.Visible = true;
                 }
             }
-        }
-
-        private void listViewEmployee_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = listViewEmployee.FocusedItem.Index;
-
-            textBoxEmpID.Text = Convert.ToString(myEmployeeList[index].EmpId);
-            textBoxFirstName.Text = myEmployeeList[index].FirstName;
-            textBoxLastName.Text = myEmployeeList[index].LastName;
-            textBoxPhoneNumber.Text = Convert.ToString(myEmployeeList[index].PhoneNumber);
-            textBoxSSN.Text = Convert.ToString(myEmployeeList[index].Ssn);
-            textBoxSalary.Text = Convert.ToString(myEmployeeList[index].Salary);
-            textBoxStreetNumber.Text = Convert.ToString(myEmployeeList[index].Address.StreetNumber);
-            textBoxStreetName.Text = myEmployeeList[index].Address.StreetName;
-            textBoxPostalCode.Text = myEmployeeList[index].Address.PostalCode;
-            textBoxCity.Text = myEmployeeList[index].Address.City;
-            textBoxProvince.Text = myEmployeeList[index].Address.Province;
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            if(comboBoxModeSelection.Text == "Employees")
-            {
-                EmployeeDA.SetEmployee(ConvertTextEmployee());
-            }
-            if (comboBoxModeSelection.Text == "Users")
-            {
-                EmployeeDA.SetUser(ConvertTextUser());
-            }
-            RefreshList();
-        }
-
-        private void HRManagement_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                Close();
-            }
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            if (comboBoxModeSelection.Text == "Employees")
-            {
-                EmployeeDA.DeleteEmployee(ConvertTextEmployee());
-            }
-            if (comboBoxModeSelection.Text == "Users")
-            {
-
-                EmployeeDA.DeleteUser(ConvertTextUser());
-            }
-            RefreshList();
-        }
-
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            if (comboBoxModeSelection.Text == "Employees")
-            {
-
-                EmployeeDA.UpdateEmployee(ConvertTextEmployee());
-            }
-            if (comboBoxModeSelection.Text == "Users")
-            {
-
-                EmployeeDA.UpdateUser(ConvertTextUser());
-            }
-            RefreshList();
         }
     }
 }
